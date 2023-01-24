@@ -1,4 +1,4 @@
-<x-layout title="Categorias" >
+<x-layout title="Categorias - Adicionar" >
   <form method="POST" action="/categorias/store">
     @csrf
       <span>Adicionar nova categoria</span><br>

@@ -15,7 +15,7 @@ class CategoriasController extends Controller
      */
     public function index()
     {
-      $categorias = Categorias::get();
+      $categorias = Categorias::all();
 
       return view('Categorias.index',compact('categorias'));
     }
@@ -55,9 +55,10 @@ class CategoriasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function list()
     {
-        //
+      $categorias = Categorias::all();
+      return view('Categorias.list',compact('categorias'));
     }
 
     /**
@@ -66,9 +67,17 @@ class CategoriasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function delete(Request $request)
     {
-        //
+        $lista = $request->input('categorias');
+        if( isset( $lista ) ){
+            foreach( $lista as $item ){
+                $categoria = Categorias::find($item);
+                $categoria->delete();
+            }
+        }
+        $categorias = Categorias::all();
+        return view('Categorias.list',compact('categorias'));
     }
 
     /**

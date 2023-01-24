@@ -13,8 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/categorias', [CategoriasController::class,'index']);
-Route::get('/', [CategoriasController::class,'index'])->name('index');
-Route::get('/categorias/index', [CategoriasController::class,'index']);
-Route::get('/categorias/create', [CategoriasController::class,'create']);
-Route::post('/categorias/store', [CategoriasController::class,'store']);
+Route::get('/categorias',         [CategoriasController::class,'index']);
+Route::get('/',                   [CategoriasController::class,'index'])->name('index');
+Route::get('/categorias/index',   [CategoriasController::class,'index']);
+Route::get('/categorias/create',  [CategoriasController::class,'create']);
+Route::post('/categorias/store',  [CategoriasController::class,'store']);
+Route::get('/categorias/list',    [CategoriasController::class,'list']);
+Route::post('/categorias/delete', [CategoriasController::class,'delete']);
