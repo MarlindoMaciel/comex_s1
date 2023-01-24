@@ -1,8 +1,8 @@
 <x-principal title="COMEX">
-<x-layout title="Adicionar Categorias" >
-  <form method="POST" action="/categorias/store">
+<x-layout title="Adicionar Clientes" >
+  <form method="POST" action="/clientes/store">
     @csrf
-      <span>Digite a nova categoria</span><br>
+      <span>Digite o novo cliente</span><br>
       <input type="text" name="nome"><br>
       <button type="submit">Adicionar</button>
   </form>

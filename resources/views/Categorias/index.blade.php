@@ -1,7 +1,9 @@
-<x-layout title="Categorias">
-<ul>
-  @foreach($categorias as $categoria)
-     <li>{{ $categoria->categoria }}</li>
-  @endforeach
-</ul>
-</x-layout>
+<x-principal title="COMEX">
+  <x-layout title="Lista de Categorias">
+  <ul>
+    @foreach($categorias as $categoria)
+     <li>{{ $categoria->nome }}</li>
+    @endforeach
+  </ul>
+  </x-layout>
+</x-principal>
