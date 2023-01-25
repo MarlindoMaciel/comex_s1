@@ -84,7 +84,21 @@ p9 span {
 <div class="script"></div>
 </div>
 <div id="div1">
-{{ $slot }}
+<a href="/p/configuracao-e-controle.html" class="esverdeado">Cconfigurações</a>
+<a href="/2011/11/como-aceder-o-html-do-blog.html" class="yellow">HTML5</a>
+<a href="/2012/07/link-ao-topo.html">Link ao topo</a>
+<a href="/2020/11/modo-escuro.html" class="blue">Modo noturno</a>
+<a href="/2020/10/favicon-blogger-2020-nova-interface.html">Favicon</a>
+<a href="/p/archive.html" class="esverdeado">Mapa do site</a>
+<a href="/search/label/script" class="yellow">JavaScript</a>
+<a href="/2019/06/codigos-de-erro-em-cooktops-de-inducao.html">Error code cooktop</a>
+<a href="/2015/03/projeto-solda-caseira-parte-um.html" class="esverdeado">Máquina solda</a>
+<a href="/2018/03/json-em-paginas-blogger.html">JSON páginas</a>
+<a href="/" class="blue">Verbratec</a>
+<a href="/2018/03/aprender-json-blogger.html" class="yellow">JSON Blogger</a>
+<a href="/2018/03/dica-de-contexto-tooltip.html" class="esverdeado">Tooltype</a>
+<a href="/2018/04/feed-blogger-json.html" class="blue">JSON Feed</a>
+<a href="/p/download.html">Template</a>
 </div>
 </div>
 

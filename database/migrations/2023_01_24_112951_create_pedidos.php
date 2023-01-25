@@ -13,16 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('vendas', function (Blueprint $table) {
+        Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
-            $table->decimal('valor_unitario', 12,2);
-            $table->decimal('valor_conjunto', 12,2)->nullable();
             $table->decimal('valor_parcial', 12,2)->nullable();
             $table->decimal('valor_desconto', 12,2)->nullable();
-            $table->decimal('valor_total', 12,2)->nullable();;
-            $table->integer('quantidade')->default(1);
+            $table->decimal('valor_total', 12,2)->nullable();
+            $table->string('status',30)->default('INICIADO');//INICIADO-CANCELADO-CONCLUIDO-PAGO-FATURADO-ENVIADO-ENTREGUE-FINALIZADO-CONSOLIDADO-BAIXADO 
             $table->string('anotacao',255)->nullable();
-            $table->foreignId('fk_produto')->contrained('produtos');
             $table->foreignId('fk_cliente')->contrained('clientes');
             $table->foreignId('fk_vendedor')->contrained('clientes');
             $table->timestamps();
@@ -36,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vendas');
+        Schema::dropIfExists('pedidos');
     }
 };

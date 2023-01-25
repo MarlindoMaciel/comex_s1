@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Compras extends Model
+class Pedidos extends Model
 {
     use HasFactory;
-    protected $table      = 'compras';
+    protected $table      = 'pedidos';
     protected $primaryKey = 'id';
     protected $fillable   = ['*'];
 }
