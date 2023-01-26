@@ -31,11 +31,8 @@
       }
       .modal{
         min-width: 300px;
-        border:solid 1px blue;
-        xfloat: left;
+        border:solid 1px green;
         position:absolute;
-        xtop:30%;
-        xleft:30%;
         display:none;
         padding:10px;
         background-color: white;
