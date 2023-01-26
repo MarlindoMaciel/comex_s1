@@ -24,7 +24,6 @@ return new class extends Migration
             $table->string('bairro',200)->nullable();
             $table->string('cidade',200)->nullable();
             $table->string('estado',200)->nullable();
-            $table->string('foto',200)->nullable();
             $table->timestamps();
         });
     }

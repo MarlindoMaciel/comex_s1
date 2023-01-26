@@ -18,7 +18,7 @@
          float: left;
       }
       .dados{
-         width: 300px;
+         min-width: 300px;
          float: left;
       }
       .botao{
@@ -27,8 +27,18 @@
         background-color: green;
       }
       .editor{
-        min-width: 200px;
-        border:none;
+        min-width: 300px;
+      }
+      .modal{
+        min-width: 300px;
+        border:solid 1px blue;
+        xfloat: left;
+        position:absolute;
+        xtop:30%;
+        xleft:30%;
+        display:none;
+        padding:10px;
+        background-color: white;
       }
     </style>
   </head>
@@ -39,7 +49,6 @@
     <a href="{{ url('/') }}/clientes"   >Clientes</a>&nbsp;
     <a href="{{ url('/') }}/produtos"   >Produtos</a>&nbsp;
     <a href="{{ url('/') }}/categorias" >Categorias</a>&nbsp;
-    <!-- <a href="{{ url('/') }}/listagem" >Listagem</a>&nbsp;-->
     </div>
     <br>
     <div id='message' class="message">@if (session('mensagem') ) {{ session('mensagem') }} @endif</div>

@@ -20,10 +20,7 @@ return new class extends Migration
             $table->decimal('valor_desconto', 12,2)->nullable();
             $table->decimal('valor_total', 12,2)->nullable();
             $table->string('status',30)->default('INICIADO');//INICIADO-CANCELADO-CONCLUIDO-PAGO-FATURADO-ENVIADO-ENTREGUE-FINALIZADO-CONSOLIDADO-BAIXADO
-            $table->foreignId('fk_cliente')->nullable();
-            $table->foreignId('fk_vendedor')->nullable();
-//            $table->foreignId('fk_cliente')->contrained('clientes');
-//            $table->foreignId('fk_vendedor')->contrained('clientes');
+            $table->foreignId('fk_cliente')->contrained('clientes');
             $table->timestamps();
         });
     }

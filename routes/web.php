@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::controller(App\Http\Controllers\ComexController::class)->group(function(){
     Route::get('/', 'index')->name('principal');
-    //Route::get('/', 'show')->with('classe','Categorias');
 });
 
 Route::controller(App\Http\Controllers\CategoriasController::class)->group(function(){
@@ -37,7 +36,7 @@ Route::controller(App\Http\Controllers\ProdutosController::class)->group(functio
     Route::get('/produtos',             'index')->name('produtos');
     Route::post('/produtos/store',      'store');
     Route::post('/produtos/delete',     'delete');
-    Route::post('/produtos/delete',     'update');
+    Route::post('/produtos/update',     'update');
 });
 
 Route::controller(App\Http\Controllers\PedidosController::class)->group(function(){

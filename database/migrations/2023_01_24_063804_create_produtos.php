@@ -17,11 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('nome',100);
             $table->text('descricao')->nullable();
-            $table->decimal('preco', 12,2)->nullable();
-            $table->integer('quantidade')->nullable();
-            $table->string('unidade',100)->nullable();
-            $table->foreignId('fk_categoria')->nullable();           
-//            $table->foreignId('fk_categoria')->contrained('categorias');
+            $table->decimal('preco_unitario', 12,2)->nullable();
+            $table->integer('quantidade_estoque')->nullable();
+            $table->foreignId('fk_categoria')->contrained('categorias');
             $table->timestamps();
         });
     }
