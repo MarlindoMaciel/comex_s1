@@ -16,11 +16,12 @@ return new class extends Migration
         Schema::create('produtos', function (Blueprint $table) {
             $table->id();
             $table->string('nome',100);
-            $table->text('descricao');
-            $table->decimal('preco', 12,2);
-            $table->integer('quantidade');
-            $table->string('unidade',100);
-            $table->foreignId('fk_categoria')->contrained('categorias');           
+            $table->text('descricao')->nullable();
+            $table->decimal('preco', 12,2)->nullable();
+            $table->integer('quantidade')->nullable();
+            $table->string('unidade',100)->nullable();
+            $table->foreignId('fk_categoria')->nullable();           
+//            $table->foreignId('fk_categoria')->contrained('categorias');
             $table->timestamps();
         });
     }

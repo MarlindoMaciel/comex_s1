@@ -19,10 +19,12 @@
   color: #fff;
   font-size: 40px;
   display: block;
-  position: relative;}
+  position: relative;
+  
+}
 .java:before {
 color:#004400;
-  content: "www.verbratec.com.br";
+  content: "www.comex.com.br";
   display: block;
   position: absolute;
   left: 185px;
@@ -33,7 +35,8 @@ color:#004400;
   -webkit-animation-delay: 2s ;
   -webkit-animation: grow 4s;
    -webkit-animation-delay:0.5s;
-  animation-fill-mode: forwards;}
+  animation-fill-mode: forwards;
+}
 @-webkit-keyframes grow
 {
   from {
@@ -80,7 +83,7 @@ p9 span {
 
 <div id='tanque'>
 <div id="all">
-<div class="java">json</div>
+<div class="java">{{ $title }}</div>
 <div class="script"></div>
 </div>
 <div id="div1">
@@ -231,4 +234,3 @@ function doPosition() {
   sc = Math.sin(c * dtr);
   cc = Math.cos(c * dtr);}
 </script>
-

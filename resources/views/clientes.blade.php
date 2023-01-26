@@ -1,37 +1,37 @@
-<x-layout title="COMEX"  listagem="{{ $listagem }}">
-  <form method="POST" action="/clientes/store">
+<x-layout>
+  <form method="POST" action="/{{ $pagina }}/store">
     @csrf
       <h4>{{ $legenda }}</h4>
-      <p><div> 
-      <div style="width:300px;float:left;">
-        <input type="text" name="nome" placeholder="Digite a categoria">
-      </div> 
-      <div style="width:200px;float:left;">
-        <button type="submit" style="width:100px">Adicionar</button> 
-      </div> 
-      </div><br></p>     
+      <p><div>
+      <div class="dados">
+        <input type="text" name="nome" placeholder="Digite um item para {{ $pagina }}" required="required">
+      </div>
+      <div class="dados">
+        <button type="submit" class="botao">Adicionar</button>
+      </div>
+      </div><br></p>
   </form>
   @if( isset( $listagem ) )
     <div><hr>
         @foreach($listagem as $item)
-        <p><div> 
-          <div style="width:300px;float:left;">
-            <form method="POST" action="/clientes/update">
-            @csrf  
-              <input type="text" name="nome" style="border:none;" value="{!! $item->nome !!}">
+        <p><div>
+          <div class="dados">
+            <form method="POST" action="/{{ $pagina }}/update">
+            @csrf
+              <input type="text" name="nome" class="editor" value="{!! $item->nome !!}" required="required">
               <input type="hidden" name="id" value="{{ $item->id }}">
-              <button type="submit" style="width:100px">Salvar</button> 
+              <button type="submit" class="botao">Salvar</button>
             </form>
           </div>
-          
-          <div style="width:200px;float:left;">  
-              <form method="POST" action="/clientes/delete">
+
+          <div class="dados">
+              <form method="POST" action="/{{ $pagina }}/delete">
                 @csrf
                 <input type="hidden" name="id" value="{{ $item->id }}">
-                <button type="submit" style="width:100px">Remover</button>
+                <button type="submit" class="botao">Remover</button>
              </form>
-          </div>     
-        </div><br></p>     
+          </div>
+        </div><br></p>
         @endforeach
     </div>
     @endif

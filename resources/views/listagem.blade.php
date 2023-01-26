@@ -4,7 +4,7 @@
       <h4>{{ $legenda }}</h4>
       <p><div>
       <div class="dados">
-        <input type="text" name="nome" placeholder="Digite um item para {{ $pagina }}" required="required">
+        <input type="text" name="nome" placeholder="Digite um item {{ $pagina }}" required="required">
       </div>
       <div class="dados">
         <button type="submit" class="botao">Adicionar</button>

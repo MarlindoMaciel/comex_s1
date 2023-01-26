@@ -15,13 +15,15 @@ return new class extends Migration
     {
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
+            $table->string('nome',255);
             $table->decimal('valor_parcial', 12,2)->nullable();
             $table->decimal('valor_desconto', 12,2)->nullable();
             $table->decimal('valor_total', 12,2)->nullable();
-            $table->string('status',30)->default('INICIADO');//INICIADO-CANCELADO-CONCLUIDO-PAGO-FATURADO-ENVIADO-ENTREGUE-FINALIZADO-CONSOLIDADO-BAIXADO 
-            $table->string('anotacao',255)->nullable();
-            $table->foreignId('fk_cliente')->contrained('clientes');
-            $table->foreignId('fk_vendedor')->contrained('clientes');
+            $table->string('status',30)->default('INICIADO');//INICIADO-CANCELADO-CONCLUIDO-PAGO-FATURADO-ENVIADO-ENTREGUE-FINALIZADO-CONSOLIDADO-BAIXADO
+            $table->foreignId('fk_cliente')->nullable();
+            $table->foreignId('fk_vendedor')->nullable();
+//            $table->foreignId('fk_cliente')->contrained('clientes');
+//            $table->foreignId('fk_vendedor')->contrained('clientes');
             $table->timestamps();
         });
     }
