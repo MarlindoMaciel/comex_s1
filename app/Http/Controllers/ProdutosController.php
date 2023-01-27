@@ -39,7 +39,7 @@ class ProdutosController extends Controller
     return redirect()->route($pagina)->with('mensagem',$mensagem);
   }
 
-  public function delete(Request $request) {
+  public function destroy(Request $request) {
     $pagina = session('PAGINA');
     $classe = 'App\Models\\' . ucfirst($pagina);
 
@@ -61,7 +61,7 @@ class ProdutosController extends Controller
 
     $tabela = new $classe;
     $registro = $tabela::find($request->id);
-
+    
     $registro->nome = $request->input('nome');
     $registro->valor_unitario = $request->input('valor_unitario');
     $registro->quantidade_estoque = $request->input('quantidade_estoque');
@@ -69,9 +69,10 @@ class ProdutosController extends Controller
     $registro->fk_categoria = $request->input('fk_categoria');
     $registro->imagem = $request->input('imagem');
     $registro->miniatura = $request->input('miniatura');
-
+    
+//    if( $registro->save($request->all()) ){
     if( $registro->save() ){
-      $mensagem = "REGISTRO Nº $request->id ALTERADO COM SUCESSO";
+        $mensagem = "REGISTRO Nº $request->id ALTERADO COM SUCESSO";
     } else {
       $mensagem = "OCORREU UM ERRO AO TENTAR ALTERAR O REGISTRO Nº $request->id";
     }

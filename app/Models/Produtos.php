@@ -10,5 +10,6 @@ class Produtos extends Model
     use HasFactory;
     protected $table      = 'produtos';
     protected $primaryKey = 'id';
+    protected $guarded    = ['id'];
     protected $fillable   = ['*'];
 }

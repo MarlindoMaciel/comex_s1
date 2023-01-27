@@ -35,7 +35,7 @@ class PedidosController extends Controller
     return redirect()->route($pagina)->with('mensagem',$mensagem);
   }
 
-  public function delete(Request $request) {
+  public function destroy(Request $request) {
     $pagina = session('PAGINA');
     $classe = 'App\Models\\' . ucfirst($pagina);
 

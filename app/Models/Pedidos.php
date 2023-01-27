@@ -10,5 +10,6 @@ class Pedidos extends Model
     use HasFactory;
     protected $table      = 'pedidos';
     protected $primaryKey = 'id';
+    protected $guarded    = ['id'];
     protected $fillable   = ['*'];
 }
