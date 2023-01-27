@@ -10,11 +10,16 @@
           background: -moz-linear-gradient(left, #808080, #363636);
           filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='#808080', EndColorStr='#363636');
         }
+      .carrinho{
+        float:right;
+        width:32px;
+        height:32px;
+      }
       .message{
         background-color: yellow;
         color: blue;
-        font-size: 8pt;
-        float: left;
+        font-size: 10pt;
+        float: right;
         border: solid 1px red;
         border-radius: 3px;
       }
@@ -45,6 +50,7 @@
     </style>
   </head>
   <body>
+    <div id='message' class="message">@if (session('mensagem') ) {{ session('mensagem') }} @endif</div>
     <div class="menu">
     <a href="{{ url('/') }}"            >Home</a>&nbsp;
     <a href="{{ url('/') }}/pedidos"    >Pedidos</a>&nbsp;
@@ -53,10 +59,18 @@
     <a href="{{ url('/') }}/categorias" >Categorias</a>&nbsp;
     </div>
     <br>
-    <div id='message' class="message">@if (session('mensagem') ) {{ session('mensagem') }} @endif</div>
     {{ $slot }}
     <script>
-      onload=setTimeout(function(){message.innerHTML='';},3000);
+      onload=apagar();
+      var lista = new Array();
+      function adicionar(id){
+         lista.push(id);
+         message.innerHTML='Produto adicionado a sua lista de compras.';
+         apagar();
+      }
+      function apagar(){
+        setTimeout(function(){message.innerHTML='';},3000);
+      }
     </script>
   </body>
 </html>

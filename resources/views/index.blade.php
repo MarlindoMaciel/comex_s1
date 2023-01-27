@@ -15,7 +15,8 @@
                    <img class="imagem" src="{{ asset('/imagens/') }}/{{ $produto->miniatura }}">
                 </a></center>
                 {{ $produto->nome }}<br>
-              <div class="valor">R$ {{ $produto->valor_unitario }}</div>
+              <spam class="valor">R$ {{ $produto->valor_unitario }}</span>
+                <img src="{{ asset('/imagens/') }}/carrinho2.png" class="carrinho" onclick="adicionar({{ $produto->id }})">
             </div>
         @endforeach
     @endif
