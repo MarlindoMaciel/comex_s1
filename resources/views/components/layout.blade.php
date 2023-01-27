@@ -4,11 +4,19 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>{{ env('APP_NAME').' '.env('APP_VERSION') }}</title>
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <script src="{{ mix('js/app.js') }}" defer></script>   
     <style>
      body{
           background: -webkit-gradient(linear, left top, right top, from(#fff), to(#ddd)) repeat;
           background: -moz-linear-gradient(left, #808080, #363636);
           filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='#808080', EndColorStr='#363636');
+        }
+     .logo{
+          background: -webkit-gradient(linear, left top, right top, from(#55526f), to(#423f60)) repeat;
+          //background: -moz-linear-gradient(left, #808080, #363636);
+          //filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='#808080', EndColorStr='#363636');
+          //background-color: #555269;
         }
       .carrinho{
         float:right;
@@ -51,6 +59,8 @@
   </head>
   <body>
     <div id='message' class="message">@if (session('mensagem') ) {{ session('mensagem') }} @endif</div>
+    <div class="logo"><img src="{{ asset('/imagens/') }}/comex.png"></div>
+    
     <div class="menu">
     <a href="{{ url('/') }}"            >Home</a>&nbsp;
     <a href="{{ url('/') }}/pedidos"    >Pedidos</a>&nbsp;

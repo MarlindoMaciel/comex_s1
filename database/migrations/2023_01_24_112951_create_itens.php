@@ -16,10 +16,9 @@ return new class extends Migration
         Schema::create('itens', function (Blueprint $table) {
             $table->id();
             $table->decimal('valor_unitario', 12,2);
-            $table->decimal('valor_conjunto', 12,2)->nullable();
             $table->decimal('valor_parcial', 12,2)->nullable();
             $table->decimal('valor_desconto', 12,2)->nullable();
-            $table->decimal('valor_total', 12,2)->nullable();;
+            $table->decimal('valor_total', 12,2)->nullable();
             $table->integer('quantidade')->default(1);
             $table->foreignId('fk_produto')->contrained('produtos');
             $table->foreignId('fk_pedido')->contrained('pedidos');

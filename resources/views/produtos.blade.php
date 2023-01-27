@@ -1,10 +1,11 @@
 <x-layout>
-  <form method="POST" action="/{{ $pagina }}/store">
+  <form method="POST" action="/produtos/store">
     @csrf
-      <h4>{{ $legenda }}</h4>
+    <input type="hidden" name="fk_categoria" value="1">
+      <h4>Lista de Produtos</h4>
       <p><div>
       <div class="dados">
-        <input type="text" name="nome" placeholder="Digite um item para {{ $pagina }}" required="required">
+        <input type="text" name="nome" placeholder="Digite um item para produtos" required="required">
       </div>
       <div class="dados">
         <button type="submit" class="botao">Adicionar</button>
@@ -19,7 +20,7 @@
             <div class="dados">{!! $item->nome !!}</div>
             <button type="button" class="botao" onclick="document.getElementById('modal{{ $item->id }}').style.display='inherit'">Editar</button>
             <div class="modal" id="modal{{ $item->id }}">
-              <form method="POST" action="/{{ $pagina }}/update">
+              <form method="POST" action="/produtos/update">
               @csrf
                 <input type="hidden" name="id" value="{{ $item->id }}">
                 Produto:<br><input type="text" name="nome" class="editor" value="{{ $item->nome }}" required="required"><br>
@@ -47,7 +48,7 @@
             </div>
           </div>
           <div class="dados">
-              <form method="POST" action="/{{ $pagina }}/delete">
+              <form method="POST" action="/produtos/delete">
                 @csrf
                 <input type="hidden" name="id" value="{{ $item->id }}">
                 <button type="submit" class="botao">Remover</button>

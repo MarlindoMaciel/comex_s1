@@ -17,11 +17,12 @@ return new class extends Migration
             $table->id();
             $table->string('nome',100);
             $table->text('descricao')->nullable();
-            $table->decimal('valor_unitario', 12,2)->nullable();
-            $table->integer('quantidade_estoque')->nullable();
+            $table->decimal('valor_unitario', 12,2)->default(0);
+            $table->integer('estoque')->default(0);
+            $table->integer('vendidos')->default(0);
             $table->foreignId('fk_categoria')->contrained('categorias');
-            $table->string('miniatura',255)->nullable();
-            $table->string('imagem',255)->nullable();
+            $table->string('miniatura',255)->default('comex.png');
+            $table->string('imagem',255)->default('comex.png');
             $table->timestamps();
         });
     }

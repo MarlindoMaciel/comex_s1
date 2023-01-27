@@ -3,30 +3,27 @@
 .galeria {
     float: left;
     width: 85%;
-    xborder:1px solid red;
     padding: 10px;
+}
+.imagem{
+    height: 130px;
+}
+.valor{
+    color: red;
+    font-size:10pt;
+    font-weight: bold;
 }
 .box {
     box-shadow: 6px 6px 13px rgb(0 0 0 / 15%) !important;
     border-radius: 5px 5px;
     background-color: #fff;
     flex: 0 0 225px;
-    padding: 5px;
+    padding:30px 5px 10px 5px;
     margin: 5px;
     margin-left :10px;
     float: left;
     min-width: 130px;
 }
-.imagem{
-    height: 130px;
-}
-
-.valor{
-    color: red;
-    font-size:10pt;
-    font-weight: bold;
-}
-
 .box:last-child {
     margin-right: 0;
 }

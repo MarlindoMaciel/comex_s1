@@ -11,5 +11,4 @@ class Categorias extends Model
     protected $table      = 'categorias';
     protected $primaryKey = 'id';
     protected $guarded    = ['id'];
-    protected $fillable   = ['*'];
 }

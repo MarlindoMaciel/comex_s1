@@ -11,5 +11,4 @@ class Pedidos extends Model
     protected $table      = 'pedidos';
     protected $primaryKey = 'id';
     protected $guarded    = ['id'];
-    protected $fillable   = ['*'];
 }

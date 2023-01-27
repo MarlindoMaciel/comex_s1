@@ -11,5 +11,4 @@ class Produtos extends Model
     protected $table      = 'produtos';
     protected $primaryKey = 'id';
     protected $guarded    = ['id'];
-    protected $fillable   = ['*'];
 }

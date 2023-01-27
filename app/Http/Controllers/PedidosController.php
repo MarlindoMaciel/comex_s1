@@ -2,74 +2,41 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pedidos;
 use Illuminate\Http\Request;
 
 class PedidosController extends Controller
 {
   public function index() {
-    session()->put('PAGINA','pedidos');
-    $pagina = session('PAGINA');
-    $classe = 'App\Models\\' . ucfirst($pagina);
-    $legenda = "Lista de $pagina";
-
-    $tabela = new $classe;
-    $listagem = $tabela::orderBy('id','desc')->get();
-
-    return view($pagina,compact('listagem','legenda','pagina'));
+    $listagem = Pedidos::orderBy('id','desc')->get();
+    return view('pedidos',compact('listagem'));
   }
 
   public function store(Request $request) {
-    $pagina = session('PAGINA');
-    $classe = 'App\Models\\' . ucfirst($pagina);
-
-    $nome = $request->input('nome');
-
-    $tabela = new $classe;
-    $tabela->nome = $nome;
-
-    if( $nome != '' && $tabela->save() ){
-      $mensagem = "REGISTRO \"$tabela->nome\" CADASTRADO COM SUCESSO";
+    if( Pedidos::create( $request->all() ) ){
+      $mensagem = "REGISTRO \"$request->nome\" CADASTRADO COM SUCESSO";
     } else {
-      $mensagem = "OCORREU UM ERRO AO CADASTRAR O ITEM \"$nome\"";
+      $mensagem = "OCORREU UM ERRO AO CADASTRAR O ITEM \"$request->nome\" ".$errors[0];
     }
-    return redirect()->route($pagina)->with('mensagem',$mensagem);
-  }
-
-  public function destroy(Request $request) {
-    $pagina = session('PAGINA');
-    $classe = 'App\Models\\' . ucfirst($pagina);
-
-    $tabela = new $classe;
-    $registro = $tabela::find($request->id);
-
-    if( $registro && $registro->delete() ) {
-      $mensagem = "REGISTRO Nº $request->id EXCLUÍDO COM SUCESSO";
-    } else {
-      $mensagem = "OCORREU UM ERRO AO TENTAR EXLUIR O REGISTRO Nº $request->id";
-    }
-
-    return redirect()->route($pagina)->with('mensagem',$mensagem);
+    return redirect()->route('pedidos')->with('mensagem',$mensagem);
   }
 
   public function update(Request $request) {
-    $pagina = session('PAGINA');
-    $classe = 'App\Models\\' . ucfirst($pagina);
-
-    $tabela = new $classe;
-    $registro = $tabela::find($request->id);
-
-    $registro->nome = $request->input('nome');
-    $registro->valor_parcial = $request->input('valor_parcial');
-    $registro->valor_desconto = $request->input('valor_desconto');
-    $registro->valor_total = $request->input('valor_total');
-    $registro->status = $request->input('status');
-    $registro->fk_cliente = $request->input('fk_cliente');
-
-    if( $registro->save() ){
+    if( Pedidos::find( $request->id )->update( $request->all() ) ){
       $mensagem = "REGISTRO Nº $request->id ALTERADO COM SUCESSO";
     } else {
-      $mensagem = "OCORREU UM ERRO AO TENTAR ALTERAR O REGISTRO Nº $request->id";
+      $mensagem = "OCORREU UM ERRO AO TENTAR ALTERAR O REGISTRO Nº $request->id ".$errors[0];
     }
-    return redirect()->route($pagina)->with('mensagem',$mensagem);
+    return redirect()->route('pedidos')->with('mensagem',$mensagem);
+  } 
+
+  public function destroy(Request $request) {
+    if( Pedidos::find( $request->id )->delete() ) {
+      $mensagem = "REGISTRO Nº $request->id EXCLUÍDO COM SUCESSO";
+    } else {
+      $mensagem = "OCORREU UM ERRO AO TENTAR EXLUIR O REGISTRO Nº $request->id ".$errors[0];
+    }
+
+    return redirect()->route('pedidos')->with('mensagem',$mensagem);
   }
 }

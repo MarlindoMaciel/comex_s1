@@ -1,10 +1,11 @@
 <x-layout>
-  <form method="POST" action="/{{ $pagina }}/store">
+  <form method="POST" action="/pedidos/store">
+  <input type="hidden" name="fk_cliente" value="1">
     @csrf
-      <h4>{{ $legenda }}</h4>
+      <h4>Lista de Pedidos</h4>
       <p><div>
       <div class="dados">
-        <input type="text" name="nome" placeholder="Digite um item para {{ $pagina }}" required="required">
+        <input type="text" name="nome" placeholder="Digite um item para clientes" required="required">
       </div>
       <div class="dados">
         <button type="submit" class="botao">Adicionar</button>
@@ -16,7 +17,7 @@
         @foreach($listagem as $item)
         <p><div>
           <div class="dados">
-            <form method="POST" action="/{{ $pagina }}/update">
+            <form method="POST" action="/pedidos/update">
             @csrf
             <input type="hidden" name="id" value="{{ $item->id }}">
             <div class="dados">{!! $item->nome !!}</div>
@@ -37,7 +38,7 @@
           </div>
 
           <div class="dados">
-              <form method="POST" action="/{{ $pagina }}/delete">
+              <form method="POST" action="/pedidos/delete">
                 @csrf
                 <input type="hidden" name="id" value="{{ $item->id }}">
                 <button type="submit" class="botao">Remover</button>

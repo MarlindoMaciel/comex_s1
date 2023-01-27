@@ -11,6 +11,4 @@ class Clientes extends Model
     protected $table      = 'clientes';
     protected $primaryKey = 'id';
     protected $guarded    = ['id'];
-    protected $fillable   = ['*'];
-
 }

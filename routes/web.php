@@ -45,3 +45,7 @@ Route::controller(App\Http\Controllers\PedidosController::class)->group(function
     Route::post('/pedidos/delete',      'destroy');
     Route::post('/pedidos/update',      'update');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
