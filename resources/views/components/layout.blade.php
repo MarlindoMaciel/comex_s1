@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width" />
     <title>{{ env('APP_NAME').' '.env('APP_VERSION') }}</title>
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-    <script src="{{ mix('js/app.js') }}" defer></script>   
     <style>
      body{
           background: -webkit-gradient(linear, left top, right top, from(#fff), to(#ddd)) repeat;
@@ -14,22 +13,16 @@
         }
      .logo{
           background: -webkit-gradient(linear, left top, right top, from(#55526f), to(#423f60)) repeat;
-          //background: -moz-linear-gradient(left, #808080, #363636);
-          //filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='#808080', EndColorStr='#363636');
-          //background-color: #555269;
+          background: -moz-linear-gradient(left, #55526f, #423f60);
+          filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='#55526f', EndColorStr='#423f60');
         }
       .carrinho{
         float:right;
         width:32px;
         height:32px;
-      }
+      }  
       .message{
-        background-color: yellow;
-        color: blue;
-        font-size: 10pt;
         float: right;
-        border: solid 1px red;
-        border-radius: 3px;
       }
       .menu{
          min-width: 600px;
@@ -38,6 +31,7 @@
       .dados{
          min-width: 300px;
          float: left;
+         margin-left:3px;
       }
       .botao{
         width: 80px;
@@ -55,21 +49,42 @@
         padding:10px;
         background-color: white;
       }
+      .conteudo{
+         padding:10px;
+      }
     </style>
   </head>
   <body>
-    <div id='message' class="message">@if (session('mensagem') ) {{ session('mensagem') }} @endif</div>
+    @if (session('mensagem') ) 
+      <div class="alert alert-primary message" id="message" role="alert">
+        {{ session('mensagem') }}
+      </div>
+    @endif
+
     <div class="logo"><img src="{{ asset('/imagens/') }}/comex.png"></div>
     
-    <div class="menu">
-    <a href="{{ url('/') }}"            >Home</a>&nbsp;
-    <a href="{{ url('/') }}/pedidos"    >Pedidos</a>&nbsp;
-    <a href="{{ url('/') }}/clientes"   >Clientes</a>&nbsp;
-    <a href="{{ url('/') }}/produtos"   >Produtos</a>&nbsp;
-    <a href="{{ url('/') }}/categorias" >Categorias</a>&nbsp;
-    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" aria-current="page" href="/">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url('/') }}/pedidos">Pedidos</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url('/') }}/clientes">Clientes</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url('/') }}/produtos">Produtos</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url('/') }}/categorias">Categorias</a></li>
+          </ul>
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
     <br>
-    {{ $slot }}
+    <div class="conteudo">
+       {{ $slot }}
+    </div>
     <script>
       onload=apagar();
       var lista = new Array();
@@ -79,7 +94,7 @@
          apagar();
       }
       function apagar(){
-        setTimeout(function(){message.innerHTML='';},3000);
+        setTimeout(function(){message.style.display='none';},3000);
       }
     </script>
   </body>

@@ -2,11 +2,12 @@
 <style>
 .galeria {
     float: left;
-    width: 85%;
+    width: 80%;
     padding: 10px;
 }
 .imagem{
-    height: 130px;
+    height: 120px;
+    width:  120px;
 }
 .valor{
     color: red;
@@ -18,11 +19,11 @@
     border-radius: 5px 5px;
     background-color: #fff;
     flex: 0 0 225px;
-    padding:30px 5px 10px 5px;
-    margin: 5px;
-    margin-left :10px;
+    padding:10px 5px 10px 5px;
+    margin: 10px;
     float: left;
-    min-width: 130px;
+    width: 150px;
+    min-height: 280px;
 }
 .box:last-child {
     margin-right: 0;
