@@ -14,9 +14,9 @@ class ProdutosController extends Controller
     $legenda = "Lista de $pagina";
 
     $tabela = new $classe;
-    $listagem = $tabela::all();
+    $listagem = $tabela::orderBy('id','desc')->get();
 
-    $categorias = Categorias::all();
+    $categorias = Categorias::orderBy('id','desc')->get();
 
     return view($pagina,compact('listagem','legenda','pagina','categorias'));
   }
@@ -29,6 +29,7 @@ class ProdutosController extends Controller
 
     $tabela = new $classe;
     $tabela->nome = $nome;
+    $tabela->fk_categoria = 1;
 
     if( $nome != '' && $tabela->save() ){
       $mensagem = "REGISTRO \"$tabela->nome\" CADASTRADO COM SUCESSO";
@@ -62,10 +63,12 @@ class ProdutosController extends Controller
     $registro = $tabela::find($request->id);
 
     $registro->nome = $request->input('nome');
-    $registro->preco_unitario = $request->input('preco_unitario');
+    $registro->valor_unitario = $request->input('valor_unitario');
     $registro->quantidade_estoque = $request->input('quantidade_estoque');
     $registro->descricao = $request->input('descricao');
     $registro->fk_categoria = $request->input('fk_categoria');
+    $registro->imagem = $request->input('imagem');
+    $registro->miniatura = $request->input('miniatura');
 
     if( $registro->save() ){
       $mensagem = "REGISTRO Nº $request->id ALTERADO COM SUCESSO";

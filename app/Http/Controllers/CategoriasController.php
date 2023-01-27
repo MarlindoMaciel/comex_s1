@@ -13,7 +13,7 @@ class CategoriasController extends Controller
       $legenda = "Lista de $pagina";
 
       $tabela = new $classe;
-      $listagem = $tabela::all();
+      $listagem = $tabela::orderBy('id','desc')->get();
 
       return view($pagina,compact('listagem','legenda','pagina'));
     }

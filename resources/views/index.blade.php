@@ -1,21 +1,25 @@
 <x-layout>
+    <x-menulateral>
+      @if( isset( $categorias ) )
+          @foreach($categorias as $categoria)
+              <div><a href="/?id={{ $categoria->id }}" class="itemlateral">{{ ucfirst( $categoria->nome ) }}</a></div>
+          @endforeach
+      @endif
+    </x-menulateral>
     <x-galeria>
+    <div class="galeria">
     @if( isset( $produtos ) )
         @foreach($produtos as $produto)
-            <div class="box">
-                <a data-fancybox="gallery" href="{{ asset('/imagens/') }}/{{ $produto->arquivo }}" data-caption="<h1>{{ $produto->nome }}</h1>{{ $produto->descricao }}<div class='valor'>R$ {{ $produto->preco_unitario }}</div>">
-
-                    <img class="imagem" src="{{ asset('/imagens/') }}/{{ $produto->arquivo }}">
-                </a>
+            <div class="box"><center>
+                <a data-fancybox="gallery" href="{{ asset('/imagens/') }}/{{ $produto->imagem }}" data-caption="<h1>{{ $produto->nome }}</h1>{{ $produto->descricao }}<div class='valor'>R$ {{ $produto->valor_unitario }}</div>">
+                   <img class="imagem" src="{{ asset('/imagens/') }}/{{ $produto->miniatura }}">
+                </a></center>
+                {{ $produto->nome }}<br>
+              <div class="valor">R$ {{ $produto->valor_unitario }}</div>
             </div>
         @endforeach
     @endif
+  </div>
     </x-galeria>
+
 </x-layout>
-<x-animacao title="{{ session('titulo') }}">
-    @if( isset( $categorias ) )
-        @foreach($categorias as $categoria)
-            <a href="/" class="esverdeado">{!! $categoria->nome !!}</a>
-        @endforeach
-    @endif
-</x-animacao>

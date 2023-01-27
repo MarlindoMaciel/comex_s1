@@ -8,11 +8,13 @@ use Illuminate\Http\Request;
 
 class ComexController extends Controller
 {
-    public function index() {
-      session()->put('versao','v1.2');
-      session()->put('titulo','COMEX'.session('versao'));
+    public function index(Request $request) {
       $categorias = Categorias::all();
-      $produtos = Produtos::join('imagens','produtos.id','=','imagens.fk_produto')->get();
+
+      if( $request->id > 0 )
+         $produtos = Produtos::where('fk_categoria','=',$request->id)->get();
+      else
+         $produtos = Produtos::all();
 
       return view('index',compact('categorias','produtos'));
     }

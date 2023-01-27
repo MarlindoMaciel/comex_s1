@@ -1,12 +1,18 @@
 <style>
  #tanque {
-  background: #003300;}
+  xbackground: #cccccc;
+  float: right;
+  width: 30%;
+  height: 800px;
+  border: 1px solid lime;
+  top:20%;
+}
 #all {
-  margin: 185px auto;
-  width: 100px;
-  height: 100px;
+  margin: 0px auto;
+  xwidth: 100px;
+  xheight: 100px;
   -webkit-animation: grow 4s;
-    -webkit-animation-delay:0.5s;
+  -webkit-animation-delay:0.5s;
   animation-fill-mode: forwards;}
 .script {
   font-family: Microsoft YaHei;
@@ -20,18 +26,17 @@
   font-size: 40px;
   display: block;
   position: relative;
-  
+
 }
 .java:before {
-color:#004400;
-  content: "www.comex.com.br";
+  xcolor:#004400;
+  content: "";
   display: block;
   position: absolute;
   left: 185px;
   top:151px;
   width: 20px;
-  height: 100%;
-  background-color: #004400;
+  xbackground-color: #004400;
   -webkit-animation-delay: 2s ;
   -webkit-animation: grow 4s;
    -webkit-animation-delay:0.5s;
@@ -43,14 +48,14 @@ color:#004400;
     width: 0px;
   }
   to {
-    width: 480px;
+    width: 300px;
   }
 }
 #div1 {
   position: relative;
-  width: 800px;
-  height: 450px;
-  margin: -300px auto 0;}
+  xwidth: 100%;
+  xheight: 300px;
+  xmargin: -300px auto 0;}
 #div1 a {
   position: absolute;
   top: 0px;

@@ -17,9 +17,11 @@ return new class extends Migration
             $table->id();
             $table->string('nome',100);
             $table->text('descricao')->nullable();
-            $table->decimal('preco_unitario', 12,2)->nullable();
+            $table->decimal('valor_unitario', 12,2)->nullable();
             $table->integer('quantidade_estoque')->nullable();
             $table->foreignId('fk_categoria')->contrained('categorias');
+            $table->string('miniatura',255)->nullable();
+            $table->string('imagem',255)->nullable();
             $table->timestamps();
         });
     }

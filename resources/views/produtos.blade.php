@@ -22,9 +22,10 @@
               <form method="POST" action="/{{ $pagina }}/update">
               @csrf
                 <input type="hidden" name="id" value="{{ $item->id }}">
-                Produto:<br><input type="text" name="nome" class="editor" value="{!! $item->nome !!}" required="required"><br>
-                Preço Unitário:<br><input type="text" name="preco_unitario" class="editor" value="{!! $item->preco_unitario !!}" required="required"><br>
-                Quantidade em estoque:<br><input type="text" name="quantidade_estoque" class="editor" value="{!! $item->quantidade_estoque !!}" required="required"><br>
+                Produto:<br><input type="text" name="nome" class="editor" value="{{ $item->nome }}" required="required"><br>
+                Preço Unitário:<br><input type="text" name="valor_unitario" class="editor" value="{{ $item->valor_unitario }}" required="required"><br>
+                Imagem:<br><input type="text" name="imagem" class="editor" value="{{ $item->imagem }}" required="required"><br>
+                Miniatura:<br><input type="text" name="miniatura" class="editor" value="{{ $item->miniatura }}" required="required"><br>
                 Categoria:<br>
                 <select name="fk_categoria" class="editor" value="{{ $item->fk_categoria }}" required="required">
                   @foreach($categorias as $categoria)

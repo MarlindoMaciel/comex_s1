@@ -3,8 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>COMEX v1.0</title>
+    <title>{{ env('APP_NAME').' '.env('APP_VERSION') }}</title>
     <style>
+     body{
+          background: -webkit-gradient(linear, left top, right top, from(#fff), to(#ddd)) repeat;
+          background: -moz-linear-gradient(left, #808080, #363636);
+          filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=1, StartColorStr='#808080', EndColorStr='#363636');
+        }
       .message{
         background-color: yellow;
         color: blue;
