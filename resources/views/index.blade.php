@@ -2,7 +2,7 @@
     <x-menulateral>
       @if( isset( $categorias ) )
           @foreach($categorias as $categoria)
-            <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ url('/') }}/?id={{ $categoria->id }}">{{ ucfirst( mb_strtolower($categoria->nome) ) }}</a></li>
+             <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ url('/') }}/?id={{ $categoria->id }}">{{ ucfirst( mb_strtolower($categoria->nome) ) }}</a></li>
           @endforeach
       @endif
       <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ url('/') }}">Todos os produtos</a></li>

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->decimal('valor_unitario', 12,2)->default(0);
             $table->integer('estoque')->default(0);
             $table->integer('vendidos')->default(0);
-            $table->foreignId('fk_categoria')->contrained('categorias');
+            $table->foreignId('categorias_id')->contrained();
             $table->string('miniatura',255)->default('comex.png');
             $table->string('imagem',255)->default('comex.png');
             $table->timestamps();

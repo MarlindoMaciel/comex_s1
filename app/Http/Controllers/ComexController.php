@@ -12,7 +12,7 @@ class ComexController extends Controller
       $categorias = Categorias::all();
       
       if( $request->id > 0 )
-         $produtos = Produtos::where('fk_categoria','=',$request->id)->get();
+         $produtos = Produtos::where('categorias_id','=',$request->id)->get();
       elseif( $request->id == -1 ) //os mais vendidos
          $produtos = Produtos::take(5)->where('vendidos','>','0')->orderBy('vendidos','desc')->get();
       elseif( $request->id == -2 ) //os mais recentes

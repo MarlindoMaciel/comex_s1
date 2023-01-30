@@ -30,7 +30,6 @@
             </div>
             </form>
           </div>
-          &nbsp;
           <div class="dados">
               <form method="POST" action="/categorias/delete">
                 @csrf

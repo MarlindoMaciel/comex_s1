@@ -29,11 +29,11 @@ INSERT INTO produtos VALUES(10,'Smartphone ASUS Zenfone Max','Smartphone ASUS Ze
 INSERT INTO produtos VALUES(11,'Notebook Asus Zenbook','Notebook Asus Zenbook Duo Ux482ear-ka371w Intel Core i7 1195g7 16gb 512gb Ssd W11 14pol Azul Celestial','7998,90',100,0,3,'11-asus-zenbuook-min.webp','11-asus-zenbuook-max.jpg',date('now'),date('now'));
 INSERT INTO produtos VALUES(12,'Conjuntos Joias Jankelly','Conjuntos De Joias De Luxo Jankelly Para Mulheres Exclusivo Conjunto De Anéis De Pulseira Africana','95,07',100,0,1,'12-anel-min.webp','12-anel-max.webp',date('now'),date('now'));
 INSERT INTO produtos VALUES(13,'Escrivaninha MATCH','Escrivaninha com Estante Lateral MATCH cor Preto/Pinho - Artely','230,96',100,0,4,'12-escrivanhinha-min.webp','12-escrivanhinha-max.jpg',date('now'),date('now'));
-INSERT INTO produtos VALUES(14,'Coraline',replace(replace('Coraline - Acompanha Marcador de Páginas Especial Capa dura – Edição padrão, 19 junho 2020\r\nClássico de Neil Gaiman que mistura terror e conto de fadas ganha edição especial\r\n\r\nCertas portas não devem ser abertas. E Coraline descobre isso pouco tempo depois de chegar com os pais à sua nova casa, um apartamento em um casarão antigo ocupado por vizinhos excêntricos e envolto por uma névoa insistente, um mundo de estranhezas e magia, o tipo de universo que apenas Neil Gaiman pode criar.','\r',char(13)),'\n',char(10)),'42,90',100,0,6,'13-livro-min.jpg','13-livro-max.webp',date('now'),date('now'));
+INSERT INTO produtos VALUES(14,'Coraline','Coraline - Acompanha Marcador de Páginas Especial Capa dura – Edição padrão, 19 junho 2020\r\nClássico de Neil Gaiman que mistura terror e conto de fadas ganha edição especial\r\n\r\nCertas portas não devem ser abertas. E Coraline descobre isso pouco tempo depois de chegar com os pais à sua nova casa, um apartamento em um casarão antigo ocupado por vizinhos excêntricos e envolto por uma névoa insistente, um mundo de estranhezas e magia, o tipo de universo que apenas Neil Gaiman pode criar.','42,90',100,0,6,'13-livro-min.jpg','13-livro-max.webp',date('now'),date('now'));
 INSERT INTO produtos VALUES(15,'Organizador Objetos no carro','Organizador Objetos Banco Traseiro Carro Acessórios Carros','41,92',100,0,5,'14-organizador-min.webp','14-organizador-max.webp',date('now'),date('now'));
 INSERT INTO produtos VALUES(16,'Bola Futebol de Areia Adidas','Bola Futebol de Areia Adidas Al Rihla PRO Beach Copa do Mundo','239,00',100,0,8,'15-bola-min.webp','15-bola-max.jpg',date('now'),date('now'));
 INSERT INTO produtos VALUES(17,'Kimono+Rash Guard+Bermuda','Kit: Kimono World Combat BJJ + Rash Guard BJJ Competidor + Bermuda BJJ Competidor','498,00',100,0,8,'16-kimono-min.webp','16-kimono-max.webp',date('now'),date('now'));
-INSERT INTO produtos VALUES(18,'Bolsa de cosméticos LHLYSGS',replace(replace('Bolsa de cosméticos de marca LHLYSGS\r\nBolsa de cosméticos de marca LHLYSGS, organizador de belleza para mujer, estuche cosmético profesional, bolsa de maquillaje de almacenamiento impermeable necesaria de viaje','\r',char(13)),'\n',char(10)),'116,75',100,0,7,'17-kitbeleza.min.webp','17-kitbeleza.max.webp',date('now'),date('now'));
+INSERT INTO produtos VALUES(18,'Bolsa de cosméticos LHLYSGS','Bolsa de cosméticos de marca LHLYSGS\r\nBolsa de cosméticos de marca LHLYSGS, organizador de belleza para mujer, estuche cosmético profesional, bolsa de maquillaje de almacenamiento impermeable necesaria de viaje','116,75',100,0,7,'17-kitbeleza.min.webp','17-kitbeleza.max.webp',date('now'),date('now'));
 
 DELETE FROM pedidos;
 INSERT INTO pedidos VALUES(1,'PEDIDO 0001.2023','1000,00',0,'5000,00','INICIADO',1,date('now'),date('now'));
@@ -45,10 +45,10 @@ INSERT INTO itens VALUES(1,'0','0','10','0',3,1,1,date('now'),date('now'));
 INSERT INTO itens VALUES(2,'0','0','5','0',4,2,2,date('now'),date('now'));
 INSERT INTO itens VALUES(3,'0','0','15','0',5,3,2,date('now'),date('now'));
 
-UPDATE itens SET valor_unitario=(SELECT valor_unitario FROM produtos WHERE produtos.id=itens.fk_produto);
+UPDATE itens SET valor_unitario=(SELECT valor_unitario FROM produtos WHERE produtos.id=itens.produtos_id);
 UPDATE itens SET valor_parcial=(valor_unitario * quantidade);
 UPDATE itens SET valor_total=(valor_parcial - valor_desconto);
 
-UPDATE produtos SET vendidos=(select sum(quantidade) from itens where itens.fk_produto=produtos.id) WHERE id IN (select fk_produto from itens where itens.fk_produto=produtos.id);
+UPDATE produtos SET vendidos=(select sum(quantidade) from itens where itens.produtos_id=produtos.id) WHERE id IN (select produtos_id from itens where itens.produtos_id=produtos.id);
 UPDATE produtos SET estoque=(estoque - vendidos);
   

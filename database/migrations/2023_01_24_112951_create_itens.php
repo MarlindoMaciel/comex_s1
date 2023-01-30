@@ -20,8 +20,8 @@ return new class extends Migration
             $table->decimal('valor_desconto', 12,2)->nullable();
             $table->decimal('valor_total', 12,2)->nullable();
             $table->integer('quantidade')->default(1);
-            $table->foreignId('fk_produto')->contrained('produtos');
-            $table->foreignId('fk_pedido')->contrained('pedidos');
+            $table->foreignId('produtos_id')->contrained();
+            $table->foreignId('pedidos_id')->contrained();
             $table->timestamps();
         });
     }

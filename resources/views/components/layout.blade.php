@@ -21,22 +21,10 @@
         width:32px;
         height:32px;
       }  
-      .message{
-        float: right;
-      }
-      .menu{
-         min-width: 600px;
-         float: left;
-      }
       .dados{
          min-width: 300px;
          float: left;
          margin-left:3px;
-      }
-      .botao{
-        width: 80px;
-        color: white;
-        background-color: green;
       }
       .editor{
         min-width: 300px;
