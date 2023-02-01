@@ -1,6 +1,7 @@
 <x-layout>
-  <form method="POST" action="/categorias/store">
+  <form  method="POST" action="{{ route('categorias.store') }}">
     @csrf
+    @method('POST')
       <h4>Lstagem de Categorias</h4>
       <p><div>
       <div class="dados">
@@ -16,8 +17,9 @@
         @foreach($listagem as $item)
         <p><div>
           <div class="dados">
-            <form method="POST" action="/categorias/update">
+            <form method="POST" action="{{ route('categorias.update',$item->id) }}">
             @csrf
+            @method('PUT')
             <input type="hidden" name="id" value="{{ $item->id }}">
             <div class="dados">{!! $item->nome !!}</div>
             <button type="button" class="btn btn-primary" onclick="document.getElementById('modal{{ $item->id }}').style.display='inherit'">Editar</button>
@@ -31,9 +33,9 @@
             </form>
           </div>
           <div class="dados">
-              <form method="POST" action="/categorias/delete">
+              <form method="POST" action="{{ route('categorias.destroy',$item->id) }}">
                 @csrf
-                <input type="hidden" name="id" value="{{ $item->id }}">
+                @method('DELETE')
                 <button type="submit" class="btn btn-primary">Remover</button>
              </form>
           </div>

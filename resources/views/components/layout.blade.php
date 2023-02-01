@@ -59,7 +59,7 @@
             <li class="nav-item"><a class="nav-link" href="{{ url('/') }}/pedidos">Pedidos</a></li>
             <li class="nav-item"><a class="nav-link" href="{{ url('/') }}/clientes">Clientes</a></li>
             <li class="nav-item"><a class="nav-link" href="{{ url('/') }}/produtos">Produtos</a></li>
-            <li class="nav-item"><a class="nav-link" href="{{ url('/') }}/categorias">Categorias</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ route('categorias.index') }}">Categorias</a></li>
           </ul>
           <form class="d-flex">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

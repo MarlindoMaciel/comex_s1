@@ -12,31 +12,37 @@ class CategoriasController extends Controller
       return view('categorias',compact('listagem'));
     }
 
+    public function show() {
+      $listagem = Categorias::orderBy('id','desc')->get();
+      return view('categorias',compact('listagem'));
+    }
+
     public function store(Request $request) {
       if( Categorias::create( $request->all() ) ){
-          $mensagem = "REGISTRO \"$request->nome\" CADASTRADO COM SUCESSO";
+        $mensagem = "REGISTRO \"$request->nome\" CADASTRADO COM SUCESSO";
       } else {
         $mensagem = "OCORREU UM ERRO AO CADASTRAR O ITEM \"$request->nome\" ".$errors[0];
       }
-      return redirect()->route('categorias')->with('mensagem',$mensagem);
+      return redirect()->route('categorias.index')->with('mensagem',$mensagem);
     }
 
     public function update(Request $request) {
+      //dd($request);
       if( Categorias::find( $request->id )->update( $request->all() ) ){
         $mensagem = "REGISTRO Nº $request->id ALTERADO COM SUCESSO";
       } else {
         $mensagem = "OCORREU UM ERRO AO TENTAR ALTERAR O REGISTRO Nº $request->id ".$errors[0];
       }
-      return redirect()->route('categorias')->with('mensagem',$mensagem);
+      return redirect()->route('categorias.index')->with('mensagem',$mensagem);
     }
     
-    public function destroy(Request $request) {
-      if( Categorias::find( $request->id )->delete() ) {
-        $mensagem = "REGISTRO Nº $request->id EXCLUÍDO COM SUCESSO";
+    public function destroy($id) {
+      if( Categorias::find( $id )->delete() ) {
+        $mensagem = "REGISTRO Nº $id EXCLUÍDO COM SUCESSO";
       } else {
-        $mensagem = "OCORREU UM ERRO AO TENTAR EXLUIR O REGISTRO Nº $request->id";
+        $mensagem = "OCORREU UM ERRO AO TENTAR EXLUIR O REGISTRO Nº $id";
       }
 
-      return redirect()->route('categorias')->with('mensagem',$mensagem);
+      return redirect()->route('categorias.index')->with('mensagem',$mensagem);
     }
 }
