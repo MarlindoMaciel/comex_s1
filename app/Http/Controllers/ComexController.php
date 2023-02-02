@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 class ComexController extends Controller
 {
     public function index(Request $request) {
-      $categorias = Categorias::all();
+      $menu_lateral = Categorias::all();
+
       
       if( $request->id > 0 )
          $produtos = Produtos::where('categorias_id','=',$request->id)->get();
@@ -20,6 +21,6 @@ class ComexController extends Controller
       else
          $produtos = Produtos::orderBy('created_at','desc')->get();
 
-      return view('index',compact('categorias','produtos'));
+      return view('index',compact('menu_lateral','produtos'));
     }
 }

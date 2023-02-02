@@ -21,13 +21,8 @@
         width:32px;
         height:32px;
       }  
-      .dados{
-         min-width: 300px;
-         float: left;
-         margin-left:3px;
-      }
-      .editor{
-        min-width: 300px;
+      .botao{
+        min-width: 90px;
       }
       .modal{
         min-width: 300px;
@@ -40,11 +35,14 @@
       .conteudo{
          padding:10px;
       }
+      .mensagem{
+        float:right;
+      }
     </style>
   </head>
   <body>
     @if (session('mensagem') ) 
-      <div class="alert alert-primary message" id="message" role="alert">
+      <div class="alert alert-primary mensagem" id="message" role="alert">
         {{ session('mensagem') }}
       </div>
     @endif
@@ -55,11 +53,13 @@
       <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item"><a class="nav-link" aria-current="page" href="/">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="{{ url('/') }}/pedidos">Pedidos</a></li>
-            <li class="nav-item"><a class="nav-link" href="{{ url('/') }}/clientes">Clientes</a></li>
-            <li class="nav-item"><a class="nav-link" href="{{ url('/') }}/produtos">Produtos</a></li>
+            <li class="nav-item"><a class="nav-link" aria-current="page" href="{{ route('index') }}">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ route('pedidos.index') }}">Pedidos</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ route('clientes.index') }}">Clientes</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ route('produtos.index') }}">Produtos</a></li>
             <li class="nav-item"><a class="nav-link" href="{{ route('categorias.index') }}">Categorias</a></li>
+
+            <li class="nav-item"><a class="nav-link" href="{{ route('testes.index') }}">Teste</a></li>
           </ul>
           <form class="d-flex">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
