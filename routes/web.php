@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,16 +14,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('/', App\Http\Controllers\ComexController::class);
+//Route::get('/', function () {
+//    return view('index');
+//});
+    Route::resource('/', App\Http\Controllers\ComexController::class);
+    Route::resource('pedidos', App\Http\Controllers\PedidosController::class);
 
-Route::resource('categorias', App\Http\Controllers\CategoriasController::class);
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::resource('clientes', App\Http\Controllers\ClientesController::class);
+    Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-Route::resource('produtos', App\Http\Controllers\ProdutosController::class);
+    Route::resource('categorias', App\Http\Controllers\CategoriasController::class);
+    Route::resource('clientes', App\Http\Controllers\ClientesController::class);
+    Route::resource('produtos', App\Http\Controllers\ProdutosController::class);
+    Route::resource('testes', App\Http\Controllers\TestesController::class);  
 
-Route::resource('pedidos', App\Http\Controllers\PedidosController::class);
+});
 
-Route::resource('testes', App\Http\Controllers\TestesController::class);
-
-Auth::routes();
+require __DIR__.'/auth.php';
